@@ -17,9 +17,9 @@
   </div>
   <nav class="main-nav">
     <ul class="main-menu" id="main-menu container">
-      <li><a href="index.html">Domov</a></li>
+      <li><a href="index.php">Domov</a></li>
       <li><a href="portfolio.html">Portfólio</a></li>
-      <li><a href="qna.html">Q&A</a></li>
+      <li><a href="qna.php">Q&A</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
     </ul>
     <a class="hamburger" id="hamburger">
@@ -41,17 +41,14 @@
       </div>
     </section>
       <section class="container">
-      <div class="accordion">
-        <div class="question">Otázka 1</div>
-        <div class="answer">Odpoveď 1</div>
-      </div>
-      <div class="accordion">
-        <div class="question">Otázka 2</div>
-        <div class="answer">Odpoveď 2</div>
-      </div>
-      <div class="accordion">
-        <div class="question">Otázka 3</div>
-        <div class="answer">Odpoveď 3</div>
+        <?php include "otazky.php"; ?>
+        <?php for($i = 0; $i < count($otazky); $i++)
+        { ?>
+          <div class = "accordion">
+            <div class = "question"><?php echo $otazky[$i]; ?></div>
+            <div class = "answer"><?php echo $odpovede[$i]; ?></div>
+          </div>
+        <?php } ?>
       </div>
     </section>
     </section>
