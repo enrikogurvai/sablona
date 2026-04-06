@@ -1,9 +1,7 @@
 <?php
 
 function vygenerujPortfolio($dir) {
-    $files = array_merge(
-        glob($dir . "/*.jpg"),
-    );
+    $files = glob($dir . "/*.jpg");
     $json = file_get_contents(__DIR__ . "../portfolio.json");
     $data = json_decode($json, true);
 
@@ -13,6 +11,7 @@ function vygenerujPortfolio($dir) {
         $filename = basename($file);
 
         echo '<div class="col-25 portfolio">';
+        echo '<a href=index.php>';
         echo '<img src="' . $file . '" alt="' . ($data[$filename] ?? "Bez názvu") . '">';
         echo '<div class="portfolio-text">';
         echo $data[$filename] ?? "Bez názvu";
