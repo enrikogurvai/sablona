@@ -1,3 +1,11 @@
+<?php
+  require_once('otazkyaodpovede.php');
+
+  $db_manager = new \qna\OtazkyAOdpovede();
+  $faqData = $db_manager->getOtazkyAOdpovede(); 
+?>
+
+
 <!DOCTYPE html>
 <html lang="sk">
 <head>
@@ -41,16 +49,18 @@
       </div>
     </section>
       <section class="container">
-        <?php include "otazky.php"; ?>
-        <?php for($i = 0; $i < count($otazky); $i++)
-        { ?>
-          <div class = "accordion">
-            <div class = "question"><?php echo $otazky[$i]; ?></div>
-            <div class = "answer"><?php echo $odpovede[$i]; ?></div>
-          </div>
-        <?php } ?>
-      </div>
-    </section>
+    <?php 
+    if (!empty($faqData)) {
+        foreach($faqData as $obj) { ?>
+            <div class="accordion">
+                <div class="question"><?php echo htmlspecialchars($obj['otazka']); ?></div>
+                <div class="answer"><?php echo htmlspecialchars($obj['odpoved']); ?></div>
+            </div>
+        <?php } 
+    } else {
+        echo "<p>Nenašli sa žiadne otázky z databazy..</p>";
+    } ?>
+</section>
     </section>
   </div>
   </main>
